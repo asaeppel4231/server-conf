@@ -1,0 +1,18 @@
+name: Deploy legal documents
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: nginx-guard
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Copy legal documents
+        run: |
+          sudo cp -r legal/* /var/www/html/src/
