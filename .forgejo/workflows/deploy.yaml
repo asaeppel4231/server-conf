@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: nginx-guard
+    runs-on: linux-arm64-minimal
 
     steps:
       - name: Checkout repository
