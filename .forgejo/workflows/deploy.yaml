@@ -15,7 +15,7 @@ jobs:
 
       - name: Test nginx configuration
         run: |
-          sudo nginx -t -c nginx-conf/nginx.conf
+          sudo nginx -t -c $PWD/nginx-conf/nginx.conf
 
       - name: Install python3
         run: |
