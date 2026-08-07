@@ -35,6 +35,10 @@ jobs:
         run: |
           sudo cp -r legal/* /var/www/html/src/
 
+      - name: Patch nginx.conf for deployment
+        run: |
+          sed -i 's|include nginx-conf/sites-available/\*;|include /etc/nginx/sites-enabled/*;|' nginx-conf/nginx.conf
+
       - name: Copy nginx configuration
         run: |
           sudo cp nginx-conf/nginx.conf /etc/nginx/nginx.conf
