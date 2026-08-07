@@ -1,3 +1,8 @@
+# Copyright (c) 2026 asaeppel4231, forgejo_admin (same identity)
+# Licensed under the GNU GPLv3.
+# https://www.gnu.org/licenses/gpl-3.0.html
+# ... or look at the LICENSE.md file in this repository for more information.
+
 server {
     listen 80;
     server_name asaeppel.dev www.asaeppel.dev;
@@ -24,10 +29,18 @@ server {
     add_header X-XSS-Protection "1; mode=block";
 
     location / {
+        limit_except GET {
+            limit_req zone=one burst=40 nodelay;
+        }
+
         try_files $uri $uri/ /src$uri.html =404;
     }
 
     location ~ ^/([A-Za-z0-9_-]+)\.css$ {
+        limit_except GET {
+            limit_req zone=one burst=40 nodelay;
+        }
+
         try_files $uri /src$uri =404;
     }
 
@@ -49,6 +62,10 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     location / {
+        limit_except GET {
+            limit_req zone=one burst=40 nodelay;
+        }
+
         proxy_pass http://127.0.0.1:3000;
 
         proxy_set_header Host $host;

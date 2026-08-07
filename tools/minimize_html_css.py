@@ -1,4 +1,8 @@
 # Short minimizer tool, generated with AI
+# Copyright (c) 2026 asaeppel4231, forgejo_admin (same identity)
+# Licensed under the GNU GPLv3.
+# https://www.gnu.org/licenses/gpl-3.0.html
+# ... or look at the LICENSE.md file in this repository for more information.
 
 import re
 import sys
