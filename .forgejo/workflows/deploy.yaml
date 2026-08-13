@@ -35,6 +35,14 @@ jobs:
         run: |
           sudo cp -r legal/* /var/www/html/src/
 
+      - name: Copy logo
+        run: |
+          sudo cp forgejo-conf/logo.png /var/lib/forgejo/custom/conf/public/img/logo.png
+
+      - name: Restart forgejo
+        run: |
+          sudo systemctl restart forgejo
+
       - name: Patch nginx.conf for deployment
         run: |
           sed -i 's|include nginx-conf/sites-available/\*;|include /etc/nginx/sites-enabled/*;|' nginx-conf/nginx.conf
